@@ -15,7 +15,7 @@ function Admin() {
   const [editId, setEditId] = useState(null);
 
   const fetchBooks = async () => {
-    const res = await axios.get('http://localhost:5000/api/books');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/books`);
     setBooks(res.data);
   };
 
@@ -30,9 +30,9 @@ function Admin() {
   const handleSubmit = async e => {
     e.preventDefault();
     if (editId) {
-      await axios.put(`http://localhost:5000/api/books/${editId}`, form);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/books/${editId}`, form);
     } else {
-      await axios.post('http://localhost:5000/api/books', form);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/books`, form);
     }
     setForm({
       title: '',
@@ -53,7 +53,7 @@ function Admin() {
   };
 
   const handleDelete = async id => {
-    await axios.delete(`http://localhost:5000/api/books/${id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/books/${id}`);
     fetchBooks();
   };
 

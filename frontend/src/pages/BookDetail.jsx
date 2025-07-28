@@ -15,10 +15,10 @@ function BookDetail() {
     const fetchBooks = async () => {
       try {
         if (id) {
-          const res = await axios.get(`http://localhost:5000/api/books/${id}`);
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/books/${id}`);
           setBooks([res.data]);
         } else {
-          const res = await axios.get('http://localhost:5000/api/books');
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/books`);
           setBooks(res.data);
         }
       } catch (err) {

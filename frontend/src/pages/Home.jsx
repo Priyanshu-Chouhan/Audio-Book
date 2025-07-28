@@ -8,7 +8,7 @@ function Home() {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const res = await axios.get('http://localhost:5000/api/books');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/books`);
       setBooks(res.data.slice(0, 3)); // show only top 3 on homepage
     };
     fetchBooks();
